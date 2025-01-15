@@ -15,6 +15,9 @@ public class Topico {
 	private Long id;
 
 	private String titulo;
+	private String mensaje;
+	private String curso;
+
 
 	public Topico(String titulo, String mensaje, String curso) {
 		this.titulo = titulo;
@@ -22,10 +25,10 @@ public class Topico {
 		this.curso = curso;
 	}
 
-	private String mensaje;
-	private String curso;
-
-
-
+	public Topico(DatosTopicoListar datosTopicoListar){
+		this.titulo = datosTopicoListar.titulo();
+		this.curso = datosTopicoListar.curso();
+		this.mensaje = datosTopicoListar.mensaje();
+	}
 
 }
