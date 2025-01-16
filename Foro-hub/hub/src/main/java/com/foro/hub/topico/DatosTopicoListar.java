@@ -1,18 +1,10 @@
 package com.foro.hub.topico;
 
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.NotBlank;
 
 public record DatosTopicoListar(
-                                String titulo,
-                                String mensaje,
-                                String curso) {
+                                @NotBlank String titulo,
+                                @NotBlank String mensaje,
+                                @NotBlank String curso) {
 
-
-
-    /*public DatosTopicoListar (Topico topico){
-			this(
-					topico.getTitulo(),
-					topico.getMensaje(),
-					topico.getCurso());
-		}*/
 	}

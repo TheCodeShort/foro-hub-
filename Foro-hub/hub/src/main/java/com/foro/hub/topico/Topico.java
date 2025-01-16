@@ -1,13 +1,19 @@
 package com.foro.hub.topico;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity(name="Topico")
 @Table(name="topicos")
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of="id")
 public class Topico {
 
 	@Id
@@ -18,12 +24,6 @@ public class Topico {
 	private String mensaje;
 	private String curso;
 
-
-	public Topico(String titulo, String mensaje, String curso) {
-		this.titulo = titulo;
-		this.mensaje = mensaje;
-		this.curso = curso;
-	}
 
 	public Topico(DatosTopicoListar datosTopicoListar){
 		this.titulo = datosTopicoListar.titulo();
