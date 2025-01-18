@@ -24,9 +24,8 @@ public class TopicoController {
 	}
 
 	@GetMapping
-	public void Topico (DatosTopicoListar datosTopicoListar){
-		System.out.println(datosTopicoListar);
+	public List<Topico> obtenerTopicos() {
+		return iTopicoRepositorio.findAll(); // Devuelve todos los tópicos de la base
 	}
-
 }
 
