@@ -11,7 +11,7 @@ public record DatosTopicoListar(
                                 @NotBlank String mensaje,
 								 String fechaCreacion,
 								@NotBlank String status,
-								@NotBlank String autor,
+								 Boolean autor,
                                 @NotBlank String curso) {
 
 	public DatosTopicoListar(Topico topico){

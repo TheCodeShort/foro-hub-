@@ -25,7 +25,7 @@ public class TopicoController {
 	@GetMapping//para traer la informacion
 	//Pageable me ayuda a organizar los datos
 	//@PageableDefault(size = 2) nos ayuda a organizar las busquedas pero personalizadas pero se puede modificar con la URL
-	public Page<DatosTopicoListar> obtenerTopicos(@PageableDefault(size = 2) Pageable paginacion) {//con esto podemos traer cierta informacion mapeada para no mostrar todo
+	public Page<DatosTopicoListar> obtenerTopicos(@PageableDefault() Pageable paginacion) {//con esto podemos traer cierta informacion mapeada para no mostrar todo
 		return iTopicoRepositorio.findAll(paginacion).map(DatosTopicoListar::new);
 	}
 
@@ -41,6 +41,13 @@ public class TopicoController {
 	public void ActualizarTopico(@RequestBody @Valid DatosActualizarTopíco datosActualizarTopíco){
 		Topico topico = iTopicoRepositorio.getReferenceById(datosActualizarTopíco.id());//con esto obtenemos el ID
 		topico.actualizarDatos(datosActualizarTopíco);
+	}
+
+	@DeleteMapping("/{id}")//para hacerlo dinamico adcional se pone entre llavaes para decirle que hay va una variable
+	@Transactional//finaliza el codigo pero guarda el proceso es como un commit
+	public void eliminarTopico(@PathVariable Long id){// con esto decimo que el id biene de del path
+		Topico topico = iTopicoRepositorio.getReferenceById(id);
+		iTopicoRepositorio.delete(topico);
 	}
 }
 

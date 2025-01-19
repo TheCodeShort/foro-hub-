@@ -22,7 +22,7 @@ public class Topico {
 	private String titulo;
 	private String mensaje;
 	private String fechaCreacion;
-	private String status;//estado del topico
+	private Boolean status = true;//estado del topico
 	private String autor;
 	private String curso;
 
@@ -33,7 +33,7 @@ public class Topico {
 		this.titulo = datosTopicoListar.titulo();
 		this.mensaje = datosTopicoListar.mensaje();
 		this.fechaCreacion = LocalDateTime.now().format(formatter);//fecha actual
-		this.status = datosTopicoListar.status();
+		this.status = true;
 		this.autor = datosTopicoListar.autor();
 		this.curso = datosTopicoListar.curso();
 
