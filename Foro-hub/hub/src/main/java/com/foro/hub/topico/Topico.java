@@ -1,16 +1,15 @@
 package com.foro.hub.topico;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity(name="Topico")
 @Table(name="topicos")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of="id")
@@ -22,13 +21,34 @@ public class Topico {
 
 	private String titulo;
 	private String mensaje;
+	private String fechaCreacion;
+	private String status;//estado del topico
+	private String autor;
 	private String curso;
 
 
 	public Topico(DatosTopicoListar datosTopicoListar){
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
 		this.titulo = datosTopicoListar.titulo();
-		this.curso = datosTopicoListar.curso();
 		this.mensaje = datosTopicoListar.mensaje();
+		this.fechaCreacion = LocalDateTime.now().format(formatter);//fecha actual
+		this.status = datosTopicoListar.status();
+		this.autor = datosTopicoListar.autor();
+		this.curso = datosTopicoListar.curso();
+
 	}
 
+	public void actualizarDatos(DatosActualizarTopíco datosActualizarTopíco) {
+		if (datosActualizarTopíco.titulo() != null){
+			this.titulo = datosActualizarTopíco.titulo();
+		}
+		if(datosActualizarTopíco.mensaje() != null){
+			this.mensaje = datosActualizarTopíco.mensaje();
+		}
+		if (datosActualizarTopíco.status() != null){
+			this.status = datosActualizarTopíco.status();
+		}
+
+	}
 }
