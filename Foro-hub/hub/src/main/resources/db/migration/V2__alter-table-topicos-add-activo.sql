@@ -1,0 +1,2 @@
+   ALTER TABLE topicos ADD COLUMN status BOOLEAN DEFAULT TRUE;
+   UPDATE topicos SET status = CAST(1 AS BOOLEAN);

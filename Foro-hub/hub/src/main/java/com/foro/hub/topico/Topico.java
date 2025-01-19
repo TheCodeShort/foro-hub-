@@ -46,9 +46,8 @@ public class Topico {
 		if(datosActualizarTopíco.mensaje() != null){
 			this.mensaje = datosActualizarTopíco.mensaje();
 		}
-		if (datosActualizarTopíco.status() != null){
-			this.status = datosActualizarTopíco.status();
-		}
-
+	}
+	public void desactivarTopico(Topico topico){
+		topico.status = false;
 	}
 }

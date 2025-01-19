@@ -45,9 +45,17 @@ public class TopicoController {
 
 	@DeleteMapping("/{id}")//para hacerlo dinamico adcional se pone entre llavaes para decirle que hay va una variable
 	@Transactional//finaliza el codigo pero guarda el proceso es como un commit
-	public void eliminarTopico(@PathVariable Long id){// con esto decimo que el id biene de del path
+	public void eliminarTopico(@PathVariable Long id){
+		Topico topico = iTopicoRepositorio.getReferenceById(id);
+		topico.desactivarTopico(topico);
+	}
+
+
+	//borrar pero en la base de datos
+	/*public void eliminarTopico(@PathVariable Long id){// con esto decimo que el id biene de del path
 		Topico topico = iTopicoRepositorio.getReferenceById(id);
 		iTopicoRepositorio.delete(topico);
-	}
+		DELETE FROM flyway_schema_history WHERE script = 'V2__alter-table-topicos-add-activo.sql';
+	}*/
 }
 
