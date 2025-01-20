@@ -46,8 +46,21 @@ public class Topico {
 		if(datosActualizarTopíco.mensaje() != null){
 			this.mensaje = datosActualizarTopíco.mensaje();
 		}
+		if(datosActualizarTopíco.fechaCreacion() != null){
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			this.fechaCreacion = LocalDateTime.now().format(formatter);//fecha actual
+		}
+		if (datosActualizarTopíco.status() != null){
+			this.status = datosActualizarTopíco.status();
+		}
+		if(datosActualizarTopíco.autor() != null){
+			this.autor = datosActualizarTopíco.autor();
+		}
+		if (datosActualizarTopíco.curso() != null){
+			this.autor = datosActualizarTopíco.autor();
+		}
 	}
-	public void desactivarTopico(Topico topico){
-		topico.status = false;
+	public void desactivarTopico(){
+		this.status = false;
 	}
 }
